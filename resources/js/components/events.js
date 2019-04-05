@@ -7,20 +7,18 @@ import event05 from '../assets/event05.png';
 
 export default class Events extends Component {
 
-  componentDidMount() {
-    window.scrollTo(0, 0) // Go to the top of the page
-  }
-
   constructor(props) {
     super(props);
 
     this.state = {
       events: [],
+      current_page: '',
+      last_page: ''
     };
   }
 
   async componentDidMount() {
-    this.setState(await api.fetchEvents());
+    this.setState(await api.fetchEvents(this.props.match.params.page));
   }
 
     render() {
@@ -60,9 +58,9 @@ export default class Events extends Component {
                       <span className="sr-only">Previous</span>
                     </a>
                   </li>
-                  <li className="page-item"><a className="page-link" href="#">1</a></li>
-                  <li className="page-item"><a className="page-link" href="#">2</a></li>
-                  <li className="page-item"><a className="page-link" href="#">3</a></li>
+                  <li className="page-item"><a className="page-link" href="/events/page=1">1</a></li>
+                  <li className="page-item"><a className="page-link" href="/events/page=2">2</a></li>
+                  <li className="page-item"><a className="page-link" href="/events/page=3">3</a></li>
                   <li className="page-item">
                     <a className="page-link" href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
