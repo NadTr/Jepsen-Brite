@@ -25,7 +25,7 @@ class EventController extends Controller
        }
     public function past()
     {
-      $events = Event::where('event_time', '<', NOW())->orderBy('event_time', 'desc')->paginate(4);
+      $events = Event::where('event_time', '<', NOW())->orderBy('event_time', 'desc')->paginate(6);
       return response()->json($events);
     }
 
@@ -46,7 +46,8 @@ class EventController extends Controller
              'event_city'       => 'required',
              'event_location'   => 'required',
              'event_image'      => 'required',
-             'event_author'     => 'required'
+             'event_author'     => 'required',
+             'reminder'         => 'nullable'
          ]);
 
          $event = Event::create($request->all());
@@ -85,13 +86,14 @@ class EventController extends Controller
 
             $request['event_author'] = auth()->user()->id;
             $request->validate([
-                'event_title' => 'nullable',
-                'event_time' => 'nullable',
+                'event_title'       => 'nullable',
+                'event_time'        => 'nullable',
                 'event_description' => 'nullable',
-                'event_city' => 'nullable',
-                'event_location' => 'nullable',
-                'event_image' => 'nullable',
-                'event_author' => 'nullable'
+                'event_city'        => 'nullable',
+                'event_location'    => 'nullable',
+                'event_image'       => 'nullable',
+                'event_author'      => 'nullable',
+                'reminder'          => 'nullable'
             ]);
 
             $event->update($request->all());

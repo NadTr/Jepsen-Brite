@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom'
-import api from '../api';
+import api from '../../api';
 
 export default class DeleteAnEvent extends Component {
 

@@ -1,17 +1,16 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Homepage from './homepage';
-import Events from './events';
-import Eventsolo from './event';
-import AddNewEvent from './addnewevent';
-import EditAnEvent from './editanevent';
-import DeleteAnEvent from './deleteanevent';
-import Register from './register';
-import Login from './login';
-import Logout from './logout';
-import Team from './team';
-import Contact from './contact';
+import Homepage from './components/homepage';
+import Events from './components/events/events';
+import Eventsolo from './components/events/event';
+import AddNewEvent from './components/events/addnewevent';
+import EditAnEvent from './components/events/editanevent';
+import DeleteAnEvent from './components/events/deleteanevent';
+import PastEvents from './components/events/pastevents';
+import Register from './components/register';
+import Login from './components/login';
+import Logout from './components/logout';
 
 const Routes = () => (
   <Switch>
@@ -22,12 +21,12 @@ const Routes = () => (
     <Route exact path="/editanevent/:id" component={EditAnEvent} />
     <Route exact path="/deleteanevent/:id" component={DeleteAnEvent} />
 
+    <Route exact path="/pastevents/page=:page" component={PastEvents} />
+
+
     <Route exact path="/register" component={Register} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/logout" component={Logout} />
-
-    <Route exact path="/team" component={Team} />
-    <Route exact path="/contact" component={Contact} />
   </Switch>
 )
 
