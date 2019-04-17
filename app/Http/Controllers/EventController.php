@@ -27,7 +27,6 @@ class EventController extends Controller
          if ($number > 0){
            if ($number%6 != 0){
              $last_page = intdiv($number, 6 ) + 1;
-
            }
            else {
              $last_page = intdiv($number, 6 );
@@ -45,7 +44,6 @@ class EventController extends Controller
       if ($number > 0){
         if ($number%6 != 0){
           $last_page = intdiv($number, 6 ) + 1;
-
         }
         else {
           $last_page = intdiv($number, 6 );
@@ -54,6 +52,7 @@ class EventController extends Controller
       $events = Event::where('event_time', '<', NOW())->orderBy('event_time', 'desc')->skip(($page-1)*6)->take(6)->get();
       return response()->json(['data' => $events, 'current_page' => $page,'last_page' => $last_page ]);
     }
+
 
     /**
      * Store a newly created resource in storage.

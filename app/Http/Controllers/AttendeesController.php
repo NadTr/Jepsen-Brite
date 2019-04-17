@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Attendees;
 use App\Event;
+use Illuminate\Support\Facades\DB;
+use App\Mail\Reminder;
+use Illuminate\Support\Facades\Mail;
 use Auth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -38,17 +41,31 @@ class AttendeesController extends Controller
      */
     public function store(Event $event)
     {
-      $user_id = Auth::user()->id;
-      $attendance = Attendees::create([
+        $user_id = Auth::user()->id;
+        $attendance = Attendees::create([
           'event_id' => $event->id,
           'user_id' => $user_id,
-      ]);
+        ]);
 
-      return response()->json([
+        // Mail::to($user)->send(new Reminder($event, $user));
+        return response()->json([
           'message' => 'Great success! You are registered on this event',
           'event' => $attendance
-      ]);
+        ]);
     }
+
+    public static function sendReminders() {
+        $todaysReminders = Event::where('reminder', '=', date('Y-m-d'))->where('reminder_sent', false);
+        $events = $todaysReminders->with('attendees')->get()->toArray();
+        $todaysReminders->update(['reminder_sent' => true]);
+        foreach($events as $event){
+            foreach ($event['attendees'] as $attendee) {
+                Mail::to($attendee['email'])->send(new Reminder($event, $attendee));
+            }
+        }
+        return $events;
+    }
+
 
     /**
      * Display the specified resource.
@@ -59,7 +76,7 @@ class AttendeesController extends Controller
     public function isAttending(Event $event)
     {
       $user_id = Auth::user()->id;
-      
+
 
 
     }

@@ -16,9 +16,9 @@ export default class Events extends Component {
     super(props);
 
     this.state = {
-      current_page: '',
+      current_page: 1,
       events: [],
-      last_page: '',
+      last_page: 1,
     };
   }
 
@@ -48,9 +48,8 @@ export default class Events extends Component {
               </div>
 
             {/* Start pagination */}
-            <div className="container">
+            <div className="container mt-3">
               <nav aria-label="Page navigation example">
-              <div className="btn btn-primary"><a className="past" href={"/pastevents/page=1"}>Back to the Past</a></div>
                 <ul className="pagination d-flex justify-content-end">
                   {parseInt(this.state.current_page) > 1 &&
                     <li className="page-item">
@@ -64,10 +63,10 @@ export default class Events extends Component {
                     <li className="page-item"><a className="page-link" href={"/events/page="+(parseInt(this.state.current_page)-1)}>{parseInt(this.state.current_page)-1}</a></li>
                   }
                   <li className="page-item"><a className="page-link page-link-active" href={"/events/page="+(parseInt(this.state.current_page))}>{parseInt(this.state.current_page)}</a></li>
-                  {parseInt(this.state.current_page) < this.state.last_page &&
-                    <li className="page-item"><a className="page-link"href={"/events/page="+(parseInt(this.state.current_page)+1)}>{parseInt(parseInt(this.state.current_page))+1}</a></li>
+                  {parseInt(this.state.current_page) < parseInt(this.state.last_page) &&
+                    <li className="page-item"><a className="page-link"href={"/events/page="+(parseInt(this.state.current_page)+1)}>{parseInt(this.state.current_page)+1}</a></li>
                   }
-                  {parseInt(this.state.current_page) < this.state.last_page &&
+                  {parseInt(this.state.current_page) < parseInt(this.state.last_page) &&
                     <li className="page-item">
                       <a className="page-link" href={"/events/page="+(parseInt(this.state.current_page)+1)} aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
@@ -77,6 +76,8 @@ export default class Events extends Component {
                   }
                 </ul>
               </nav>
+              <div className="btn btn-danger px-3 py-2"><a className="past text-white" href={"/pastevents/page=1"}>Back to the Past</a></div>
+
             </div>
             {/* End pagination */}
         </div>
