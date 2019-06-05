@@ -37,11 +37,11 @@ The back end useful instructions are [here](https://github.com/NadTr/Jepsen-Brit
   
 ## The instructions for this project :
 
-## Le projet Jepsen Brite
+### Le projet Jepsen Brite
 
 Ici nous allons créer un gestionnaire d'évènements (comme Event Brite pour ceux qui connaissent).
 
-### Gestion des users
+#### Gestion des users
 
 * Il doit être possible de se créer un compte et de se logger.
 * La création de users est publique.
@@ -49,29 +49,29 @@ Ici nous allons créer un gestionnaire d'évènements (comme Event Brite pour ce
 * Quand un user est créé il doit recevoir un mail l'avertissant de son inscription.
 * Un user doit avoir une adresse mail (pour les mails qui lui seront envoyés) et un pseudonyme (qui sera affiché sur le site, puisqu'on ne peut pas raisonnablement publier l'adresse mail de quelqu'un comme on le veut).
 
-### Page d'accueil
+#### Page d'accueil
 
 * La page d'accueil présente une liste des évènements à venir, par ordre chronologique (le prochain à se produire est le premier présenté, puis le suivant, etc...). Chaque évènement doit être affiché avec son nom, sa date et heure et sa description.
 * Sur chaque évènement un lien doit permettre d'aller à la page de l'évènement.
 * Il doit être possible d'accéder à la page de création d'évènement depuis la page d'accueil.
 
-### Page d'évènement
+#### Page d'évènement
 
 * La page d'évènement présente toutes les informations de l'évènement ainsi que la liste des inscrits.
 * Elle doit permettre de s'inscrire ou de se désinscrire à l'évènement (si on est loggé).
 * L'auteur de l'évènement doit avoir la possibilité de le modifier (mais personne d'autre ne peut le faire). Il est possible de rediriger vers une autre page pour l'édition ou de le faire dans la même page (à vous de voir ce qui est le plus ergonomique).
 
 
-### Page de création d'évènement
+#### Page de création d'évènement
 
 * N'importe quel user loggé peut créer un évènement.
 * En dehors ce cela c'est comme la page d'édition d'évènement.
 
-### Page des évènements passés
+#### Page des évènements passés
 
 * C'est le même principe que la page d'accueil sauf qu'elle permet de voir les évènements qui ont déjà eu lieu, par ordre anté-chronologique.
 
-### Bonus
+##### Bonus
 
 * Proposer également un affichage en calendrier de la liste des évènements à venir (des tabs pourraient, par exemple, permettre de passer d'un mode d'affichage à l'autre). [Exemple](https://www.brussels-expo.com/events/calendrier/).
 * Envoyer de joli mails avec un thème.
