@@ -1,7 +1,5 @@
 # Jepsen-Brite
 
-You can access to the website [on heroku](https://jepsenbrite-jnsnc.herokuapp.com/)  
-
 The back end useful instructions are [here](https://github.com/NadTr/Jepsen-Brite/blob/master/Jepsen-Brite%20API.md)
 
 ## Install the dependencies :
